@@ -10,31 +10,171 @@
    Date: 9.10.18
    
    Filename: lake_styles.css
+/*  */
+/* * {
+    border: 1px solid red;
+} */
+/* 
+Just in case, to link outside fonts, I linked the font families champagne and dobkin, even if I didn't use the both of them. I stated that the name of the font face would be Champagne and Dobkin respectively, with a url linked with the fonts given in the document, and showing that their format is either woff for the .woff files, or TrueType for the .ttf files.
+*/
+@font-face {
+    font-family: Champagne;
+    src: url('cac_champagne.woff') format('woff');
+    src: url('cac_champagne.ttf') format('TrueType')
+}
+
+@font-face {
+    font-family: Dobkin;
+    src: url('DobkinPlain.woff') format('woff');
+    src: url('DobkinPlain.ttf') format('TrueType')
+}
 
 /* Structural Styles */
+/* 
+The html color allows the entire document to have this background. I also used the border with the one pixel to see what would be affected inside the document.
+*/
 html {
     background-color: rgb(180, 171, 84);
 }
 
+/* 
+This changes the font of everything in the document to this font family, and the background color of the main body to white(to differ from the standard set by the html selector).
+*/
 body {
     background-color: white;
+    font-family: 'Courier New', Courier, monospace, sans-serif;
 }
 
+/* 
+The background color here was selected using rgb values, to get a dark orange color, and the text was aligned to the middle of the line. Again, the one pixel red border helped to see what would be effected.
+*/
+footer {
+    background-color: rgb(233, 179, 31);
+    text-align: center;
+}
+
+/* 
+The comma between the two headers explains that both of the elements would be given the same attributes in the selector
+*/
+h1,
+h2 {
+    font-family: Champagne, sans-serif;
+    font-size: 3.5em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 /* Nav Styles */
+/* 
+This changes the text in the nav to the center, and gives the background color a light purple shade.
+*/
 nav {
-    background-color: rgb(123, 36, 163);
+    background-color: rgb(181, 22, 255);
+    text-align: center;
+}
+
+/* 
+This section is where I removed my underlines from my text; removing the text decoration takes away the underline, while text-align to the center... aligns the text to the center. Shocker.
+*/
+nav>ul>li>a {
+    text-decoration: none;
+    text-align: center;
+}
+
+/* 
+This was to remove the discs from the left side of the unordered list. It didn't work when it was inside of the anchor tag, but so long as it works now, I have no problem with it.
+*/
+nav ul {
+    list-style-type: none;
+}
+
+/* 
+The pseudo-elements here say that any link that has been visited or otherwise would have the gray-ish color, until hovered over, or in the process of being clicked, to which it would turn the text color golden.
+*/
+nav>ul>li>a:link,
+nav>ul>li>a:visited {
+    color: rgb(94, 78, 78)
+}
+
+nav>ul>li>a:active,
+nav>ul>li>a:hover {
+    color: gold
 }
 
 /* Section Styles */
+/* 
+This section is mainly used for coloring. Without the >nav, it only made a small stripe purple, so I included the nav in there as well.
+*/
 section#rightcol {
-    background-color: rgb(142, 66, 177);
+    background-color: rgb(174, 93, 212);
 }
 
 section#rightcol>nav {
-    background-color: rgb(142, 66, 177);
+    background-color: rgb(174, 93, 212);
+}
+
+/* 
+This was just to get some white space on the right away. The margin of the section with the rightcol id had some white space, which I assumed was only a margin, but when I deleted the margin, it refused to space the column to the right to take away the white space. To combat this, I floated the entire column to the right, which pushes it all the way to the right of the body tag.
+*/
+body>section#rightcol {
+    float: right;
+    margin-right: 0px;
+}
+
+/* 
+I didn't like how all of my text was touching the left wall, so I added a bit of padding to seperate the wall from the text.
+*/
+section#leftcol>p {
+    padding-left: 10px;
 }
 
 /* Aside Styles */
+aside {
+    background-color: peachpuff;
+}
+
+/* 
+This section is to give the headings (first level of importance and second level of importance) a different font, and to make them slightly bigger than everything else.
+*/
+aside>h1,
+aside>h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em;
+}
+
+/* 
+This is here to make only the first aside section a different color than the second aside tag. It looks bettter like that. The way that I do that is by giving the aside tags a base color, and overwriting that by making the specific first one (using pseudo-elements) have a different background color.
+*/
+aside:first-of-type {
+    background-color: palegoldenrod;
+}
+
+/* 
+This serves no other purpose than basic aesthetic. I prefer them to be in the center.
+*/
+aside>h2 {
+    text-align: center;
+}
 
 /* Blockquote Styles */
+/* 
+This gives the blockquotes a text color that is white, but not fully opaque, so some of the background color bleeds through as a byproduct of that.
+*/
+blockquote {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* 
+This entire section is to add quotation marks to the end and beginning of the blockquotes which have a different font than the blockquote itself (Which is set by the body text). I also made the size slightly bigger than the text itself.
+*/
+blockquote::before {
+    content: open-quote;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+}
+
+blockquote::after {
+    content: close-quote;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+}
